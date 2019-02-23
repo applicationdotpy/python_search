@@ -1,0 +1,46 @@
+<!doctype html>
+
+<title>Search with keywords</title>
+<meta charset=utf-8> 
+
+<html>
+   <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media="screen"/>
+        <meta http-equiv="refresh" content="10" />
+       <script>
+            function gotowebpage(){
+                window.location ="/analysis/"+"?key1="+key1+"&key2="+key2+"&key3="+key3;
+            }
+        </script>
+
+    </head>
+
+<a href="/analysis/">Click here for testing</a>
+<br>
+<br>
+<body >
+    <form action="/analysis" method="post">
+        <div class="container">
+
+              <div class="col-xs-12 text-center bg-primary" style="height:50px;"><h3>Smart foresight</h3> </div>
+              <input type="submit" name="_fid_30" onClick="gotowebpage();">Refresh</input>
+          </div>
+          <div class="row">
+            <div class="col-xs-9 bg-info" style="height:410px;">
+                Top 10 keywords for given keywords are:
+            </div>
+
+            <div class="col-xs-3 bg-danger" style="height:410px;">
+                <p>Search criteria:</p>
+                <p>{{data.key1}}</p>
+                <p>{{data.key2}}</p>
+                <p>{{data.key3}}</p>
+                <p>{{data.count}}</p>
+            </div>
+          </div>
+        </div>
+    </form>
+
+</body>
+</html>
+

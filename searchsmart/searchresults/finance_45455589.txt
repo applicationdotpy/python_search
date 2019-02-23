@@ -1,0 +1,1 @@
+{"finance": [{"org": ["https://www.google.com/finance", "https://www.financedublin.com/", "https://www.financeireland.ie/", "https://www.finance.gov.ie/en/", "https://finance.yahoo.com/", "https://www.ucc.ie/en/ck204/", "http://www.dit.ie/finance/", "https://en.wikipedia.org/wiki/Finance", "https://www.myucd.ie/courses/business/economics-finance/"]}]}

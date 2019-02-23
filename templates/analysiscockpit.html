@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Sentority Data-Anlytics Dashboard">
+    <meta http-equiv="refresh" content="30" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Smart Search</title>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='d3.layout.cloud.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+
+	    <script>
+
+         var frequency_list = ''
+         function callfunc(text) {
+
+
+              var x = text.match(/\{(.*)\{/);
+              var json = eval("(" + text + ")");
+
+              frequency_list = json;
+
+              var color = d3.scale.linear()
+                    .domain([0,1,2,3,4,5,6,10,15,20,100])
+                    .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+
+              d3.layout.cloud().size([1000, 300])
+                    .words(frequency_list)
+                    .rotate(0)
+                    .fontSize(function(d) { return d.size; })
+                    .on("end", draw)
+                    .start();
+
+              //draw(frequency_list);
+              function draw(words) {
+
+                    d3.select("textcloud").append("svg")
+                        .attr("width", "100%")
+                        .attr("height", "350")
+                        .attr("class", "wordcloud")
+                        .append("g")
+                        .attr("transform", "translate(320,200)")
+                        .selectAll("text")
+                        .data(words)
+                        .enter().append("text")
+                        .style("font-size", function(d) { return d.size + "px"; })
+                        .style("fill", function(d, i) { return color(i); })
+                        .attr("transform", function(d) {
+                            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                        })
+                        .text(function(d) {
+                            return d.text;
+                    });
+              }
+        }
+        function do_ajax() {
+            /*
+            var refAttr;
+            var metaTags = document.getElementsByTagName("meta");
+            alert(metaTags.length);
+            refAttr = metaTags[4].getAttribute("http-equiv");
+            alert(refAttr)
+            for( i=0; i < metaTags.length; i++) {
+                refAttr = metaTags[i].getAttribute("http-equiv");
+                if(refAttr != null && refAttr == "refresh") {
+                    alert('inside');
+                    metaTags[i].parentNode.removeChild(metaTags[i]);
+                    alert(metaTags[i]);
+                }
+            }
+            */
+             var xhttp = new XMLHttpRequest();
+             xhttp.onreadystatechange = function() {
+
+                if(this.readyState == 4 && this.status == 200) {
+                     val = callfunc(this.responseText);
+
+
+                } else {
+                    //result.innerHTML = "Test";
+                }
+             }
+
+            //let url = new URL('http://www.test.com/t.html?a=1&b=3&c=m2-m3-m4-m5');
+            //let searchParams = new URLSearchParams(url.search);
+
+            val1 = new URLSearchParams(window.location.search).get('key1');
+
+             xhttp.open('GET', '/cloud/?key1=' + val1, true);
+             xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+             //xhttp.send("name=" + document.getElementById('name').value);
+             xhttp.send();
+
+        }
+
+    </script>
+
+</head>
+
+
+
+<body onload="do_ajax()">
+
+<footer>
+
+        <a href="http://www.next-data-service.com/impressum/" target="_blank" class="footerlink">Imprint</a>
+        <a href="https://www.next-data-service.com/contact/" target="_blank" class="footerlink">Contact</a>
+</footer>
+
+<div class="pure-g">
+
+	<div class="pure-u-1-5">&nbsp;</div>
+     <DIV class="pure-u-5-5">
+        <DIV class="high50"></DIV>
+    </DIV>
+    <div class="pure-u-4-24">&nbsp;</div>
+        <DIV class="pure-u-16-24">
+            <DIV class="box" height="50px">
+
+
+                <p style="font-face: 'Comic Sans MS'; font-size: medium; color: white;">Search Criteria : {{ searchterm }}
+                    <a href="/" style="color:red; font-size: small;">(<u>New Search</u>)</a></p>
+              {% if otherkeys == 'Y'%}
+                <p style="font-face: 'Comic Sans MS'; font-size: medium; color: white;"> {{ searchterm1 }} </p>
+              {% endif %}
+
+                  {% if otherkeys2 == 'Y'%}
+                    <p style="font-face: 'Comic Sans MS'; font-size: medium; color: white;"> {{ searchterm2 }} </p>
+                {% endif %}
+
+                {% if progress != ''%}
+                    <p style="font-face: 'Comic Sans MS'; font-size: small; color: red;"> {{ progress }} </p>
+
+                {% endif %}
+
+            </DIV>
+        </DIV>
+
+        <div class="pure-u-1-5">&nbsp;</div>
+        <DIV class="pure-u-5-5">
+            <DIV class="high25"></DIV>
+        </DIV>
+        <div class="pure-u-4-24">&nbsp;</div>
+        <DIV class="pure-u-16-24">
+            <DIV class="box">
+                <textcloud>
+
+                </textcloud>
+            </DIV>
+        </DIV>
+
+
+        <div class="pure-u-5-5">
+             <div class="high25"></div>
+        </div>
+
+
+        <div class="pure-u-4-24">&nbsp;</div>
+        <div class="pure-u-16-24">
+            <div class="box">
+            <div class="pure-u-1-1" style="overflow-y:scroll; overflow-x:scroll; height:500px;">
+                <p style="font-face: 'Comic Sans MS'; font-size: medium; color: white;">Total links: {{ urlcounts }} </p>
+                    <form action="#" method="post">
+
+                          <table class="pure-table pure-table-bordered">
+                              <col width="330">
+                              <col width="530">
+
+                              <thead>
+                                  <th style="width:100px;">Link + Source</th>
+                                  <th style="width:150px;">Keywords</th>
+
+                              </thead>
+                              <tbody>
+                                  {% set count = 1 %}
+                                  {% for d in data %}
+                                        {%  for k in d %}
+
+                                            {% set count = count + 1 %}
+                                            {%if count%2 == 0 %}
+                                                {% set row_class = "" %}
+                                            {% else %}
+                                                {% set row_class = "" %}
+
+                                            {% endif %}
+
+                                            <tr class="{{ row_class }}">
+                                                <td style="font-face: 'Comic Sans MS'; font-size: small; color: white;">
+                                                    <div style='width: 180px;'><a href="{{ k }}" target="_blank">{{ k }}</a></div>
+                                                </td>
+                                                <td style="font-face: 'Comic Sans MS'; font-size: small; color: white;"> {{ d[k][0] }} </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                    </form>
+
+            </div>
+            </div>
+        </div>
+
+        <div class="pure-u-5-5">
+            <div class="high50"></div>
+        </div>
+    </div>
+</body>
+</html>

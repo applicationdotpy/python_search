@@ -1,0 +1,123 @@
+html {
+	background: url("/img/hand_web.png") fixed no-repeat center / cover; color: rgb(255, 255, 255); letter-spacing: 0.05em; font-family: arial, sans-serif; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+}
+body {
+	background: url("/img/hand_web.png") fixed no-repeat center / cover; color: rgb(255, 255, 255); letter-spacing: 0.05em; font-family: arial, sans-serif; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+}
+h1 {
+	width: 100%; color: rgb(255, 255, 255); padding-bottom: 5px; font-weight: normal; margin-bottom: 5px; border-bottom-color: rgb(229, 229, 229); border-bottom-width: 1px; border-bottom-style: solid; display: block; -webkit-margin-before: 10px; -webkit-margin-after: 15px; -webkit-margin-start: 0px; -webkit-margin-end: 0px;
+}
+h2 {
+	width: 100%; color: rgb(255, 255, 255); padding-bottom: 5px; font-weight: normal; margin-bottom: 5px; border-bottom-color: rgb(229, 229, 229); border-bottom-width: 1px; border-bottom-style: solid; display: block; -webkit-margin-before: 10px; -webkit-margin-after: 15px; -webkit-margin-start: 0px; -webkit-margin-end: 0px;
+}
+h3 {
+	width: 100%; color: rgb(255, 255, 255); padding-bottom: 5px; font-weight: normal; margin-bottom: 5px; border-bottom-color: rgb(229, 229, 229); border-bottom-width: 1px; border-bottom-style: solid; display: block; -webkit-margin-before: 10px; -webkit-margin-after: 15px; -webkit-margin-start: 0px; -webkit-margin-end: 0px;
+}
+nav {
+	padding: 0px 0px 0px 2em; left: 0px; top: 0px; right: 0px; color: white; line-height: 20px; font-size: 1.25em; position: fixed; z-index: 99; min-height: 20px; background-image: linear-gradient(to right, rgb(38, 63, 103) 0%, rgb(118, 153, 172) 100%); background-color: rgb(118, 153, 172);
+}
+footer {
+	padding: 0px 0px 0px 2em; left: 0px; right: 0px; bottom: 0px; color: rgb(238, 238, 238); line-height: 2.2em; font-size: 0.9em; position: fixed; z-index: 98; min-height: 2.2em; background-image: linear-gradient(to right, rgb(118, 153, 172) 0%, rgb(38, 63, 103) 100%); background-color: rgb(118, 153, 172);
+}
+input {
+	margin: 5px; color: rgb(102, 102, 102);
+}
+select {
+	margin: 5px; color: rgb(102, 102, 102);
+}
+.navlink ul {
+	list-style: none; margin: 0px; padding: 0px; text-align: center;
+}
+.navlink li {
+	border-color: rgba(255, 255, 255, 0.1); height: 25px; line-height: 25px; font-size: 1em; border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid;
+}
+.navlink a {
+	transition:background-color 0.3s; color: rgb(238, 238, 238); font-size: 0.9em; text-decoration: none; display: block;
+}
+.navlink a:hover {
+	background-color: rgba(200, 200, 200, 0.1);
+}
+@media screen and (min-width:800px)
+{
+.navlink li {
+	width: 100px; height: 40px; line-height: 40px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;
+}
+.navlink li {
+	margin-right: -6px; display: inline-block;
+}
+}
+@media screen and (max-width:800px)
+{
+.navlink {
+	display: none;
+}
+}
+a:link {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a:visited {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a:hover {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a:active {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+.footerlink {
+	margin: 0px 0px 0px 20px; color: rgb(238, 238, 238);
+}
+.alert {
+	margin: 15px 5px 5px; color: rgb(255, 132, 88); line-height: 2em; font-size: 1em;
+}
+.hidden {
+	visibility: hidden;
+}
+.high25 {
+	margin-top: 25px;
+}
+.high50 {
+	margin-top: 50px;
+}
+.high100 {
+	margin-top: 100px;
+}
+.high150 {
+	margin-top: 150px;
+}
+.aussenrand {
+	padding: 150px 20px 50px;
+}
+.appborder {
+	padding: 100px 20px 50px;
+}
+.box {
+	margin: 10px 20px; padding: 20px 30px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.6); border-image: none; line-height: 1.25em; letter-spacing: 0.05em; min-width: 230px; background-color: rgba(38, 63, 103, 0.85);
+}
+.fullscreen {
+	width: 100%; height: 100%;
+}
+.pure-button-primary {
+	margin: 5px; color: rgb(255, 255, 255); background-color: rgb(76, 167, 82);
+}
+.pure-button-selected {
+	margin: 5px; color: rgb(255, 255, 255); background-color: rgb(76, 167, 82);
+}
+a.pure-button-primary {
+	margin: 5px; color: rgb(255, 255, 255); background-color: rgb(76, 167, 82);
+}
+a.pure-button-selected {
+	margin: 5px; color: rgb(255, 255, 255); background-color: rgb(76, 167, 82);
+}
+.pure-form .pure-help-inline {
+	color: rgb(255, 255, 255);
+}
+.pure-form-message-inline {
+	color: rgb(255, 255, 255);
+}
+.pure-form-aligned .pure-control-group label {
+	text-align: left;
+}
+.research {
+	font-size: 2.8em; margin-top: 1px;
+}
