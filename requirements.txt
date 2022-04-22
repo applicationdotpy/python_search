@@ -15,7 +15,7 @@ MarkupSafe==1.0
 nltk==3.2.5
 pyasn1==0.4.2
 PyDictionary==1.5.2
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 rake-nltk==1.0.2
 requests==2.18.4
 selenium==3.9.0
